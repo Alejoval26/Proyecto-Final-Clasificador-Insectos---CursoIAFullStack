@@ -9,6 +9,8 @@ import pandas as pd
 import mysql.connector
 from mysql.connector import Error
 from io import BytesIO
+from pydantic import BaseModel
+from fastapi import HTTPException
 
 # Configuración de la aplicación y CORS
 app = FastAPI()
@@ -39,6 +41,32 @@ label_map = {index - 2: class_name for index, class_name in enumerate(df_classes
 def get_db_connection():
     connection = mysql.connector.connect(**db_config)
     return connection
+
+class UserRegistration(BaseModel):
+    username: str
+    password: str
+
+@app.post("/registrar")
+def register_user(user: UserRegistration):
+    try:
+        connection = get_db_connection()
+        cursor = connection.cursor()
+        
+        # Verificar si el usuario ya existe
+        cursor.execute("SELECT * FROM usuarios WHERE usuario = %s", (user.username,))
+        if cursor.fetchone():
+            raise HTTPException(status_code=400, detail="El nombre de usuario ya está en uso")
+        
+        # Insertar el nuevo usuario
+        cursor.execute("INSERT INTO usuarios (usuario, contrasena) VALUES (%s, %s)", (user.username, user.password))
+        connection.commit()
+        
+        return {"mensaje": "Usuario registrado con éxito"}
+    except Error as err:
+        raise HTTPException(status_code=500, detail=f"Error en la base de datos: {err}")
+    finally:
+        cursor.close()
+        connection.close()
 
 @app.post("/login")
 def login(username: str = Form(...), password: str = Form(...)):

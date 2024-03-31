@@ -66,10 +66,14 @@ button, input[type="file"] {
     box-sizing: border-box; /* Incluye el padding y border en el ancho del elemento */
 }
 
-input[type="file"] {
-    background-color: #fff; /* Color de fondo para el input */
-    color: #333; /* Color de texto para el input */
-    text-align: center; /* Centra el texto del input */
+#captureButton{
+    background-color: #4bce30;
+    color: #000000;
+}
+
+#image{
+    background-color: #50b03c;
+    color: #000000;
 }
 
 button:hover, input[type="file"]:hover {

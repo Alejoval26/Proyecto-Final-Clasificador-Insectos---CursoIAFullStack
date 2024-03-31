@@ -77,6 +77,27 @@ p{
     background-color: #28e000;
 }
 
+.register-link {
+    color: #fff;
+    margin-top: 15px;
+}
+
+.register-link a {
+    color: #2bff00;
+    text-decoration: none;
+    
+    background-color: #333; /* Color de fondo para el enlace */
+    padding: 10px 20px; /* Padding para hacerlo parecer un botón */
+    border-radius: 5px; /* Bordes redondeados para el enlace */
+    display: inline-block; /* Para aplicar padding y margin */
+    transition: background-color 0.3s ease; /* Transición suave para el hover */
+}
+
+.register-link a:hover {
+    background-color: #2bff00;
+    color: #000000;
+}
+
 /* Media queries para la responsividad */
 @media (max-width: 768px) {
     #loginForm input[type="text"],
