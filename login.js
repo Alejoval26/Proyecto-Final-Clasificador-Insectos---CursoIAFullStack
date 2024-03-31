@@ -4,23 +4,21 @@ document.getElementById('loginForm').onsubmit = async (event) => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
+    const formData = new URLSearchParams();
+    formData.append('username', username);
+    formData.append('password', password);
+
     const response = await fetch('http://localhost:8000/login', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-            username,
-            password
-        })
+        body: formData
     });
 
     const data = await response.json();
     if (response.ok) {
-        //cambio de pestana gracias a peticion exitosa
+        // Cambio de pestaña gracias a petición exitosa
         window.location.href = 'clasificar.html';
     } else {
-        // alerta por error en la peticion
+        // Alerta por error en la petición
         alert(data.detail);
     }
 };

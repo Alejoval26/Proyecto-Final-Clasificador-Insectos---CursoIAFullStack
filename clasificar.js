@@ -74,24 +74,28 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Por favor, captura o sube una imagen antes de clasificar.');
             return;
         }
-
+    
         // Preparar la imagen del canvas para enviar
         const imageData = canvasElement.toDataURL('image/jpeg');
         const blobData = dataURLtoBlob(imageData);
-
+    
         resultadoDiv.style.display = 'none';
         const formData = new FormData();
         formData.append('file', blobData);
-
+    
         try {
             const response = await fetch('http://localhost:8000/clasificar', {
                 method: 'POST',
                 body: formData
             });
             const data = await response.json();
-
+    
             if (response.ok && data.clase) {
-                resultadoDiv.innerText = `Clase predicha: ${data.clase}`;
+                resultadoDiv.innerHTML = `<strong>Clase predicha:</strong> ${data.clase}<br>`;
+                // Si hay una descripción, añadirla al contenido del elemento 'resultadoDiv'.
+                if (data.descripcion) {
+                    resultadoDiv.innerHTML += `<strong>Descripción:</strong> ${data.descripcion}`;
+                }
             } else {
                 resultadoDiv.innerText = `Error: ${data.error || 'Error en la clasificación'}`;
             }
@@ -100,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         resultadoDiv.style.display = 'block';
     });
+    
 
     setupCamera(); // Inicia la cámara al cargar la página
 });
