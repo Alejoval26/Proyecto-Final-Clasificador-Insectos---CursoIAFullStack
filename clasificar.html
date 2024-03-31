@@ -1,20 +1,36 @@
-<!-- clasificar.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clasificar Imagen</title>
+    <title>CLASIFICADOR DE INSECTOS</title>
+    <link rel="stylesheet" href="clasificar.css">
 </head>
 <body>
-    <h2>Clasificar Imagen</h2>
-    <form id="imageForm">
-        <input type="file" id="image" accept="image/*" required>
-        <button type="submit">Clasificar</button>
-    </form>
-
+    <h2>CLASIFICADOR DE INSECTOS</h2>
+    <p class="description">Este clasificador de imágenes te permite identificar y clasificar cualquier insecto en la imagen que cargues o captures. Selecciona una imagen o toma una foto y pulsa 'Clasificar' para obtener los resultados.</p>
+    
+    <!-- Contenedor para el stream de video/cámara -->
+    <div class="camera" id="camera">
+        <video id="videoStream" playsinline autoplay></video>
+    </div>
+    
+    <!-- Contenedor para los controles -->
+    <div class="controls">
+        <!-- Botón para capturar la foto -->
+        <button id="captureButton">Capturar Foto</button>
+        <!-- Input para cargar la imagen -->
+        <input type="file" id="image" accept="image/*">
+        <!-- Botón para clasificar la imagen -->
+        <button id="classifyButton">Clasificar</button>
+    </div>
+    
+    <!-- Canvas para mostrar la imagen capturada o cargada -->
+    <canvas id="canvas"></canvas>
+    
+    <!-- Contenedor para mostrar el resultado -->
     <div id="resultado"></div>
-
+    
     <script src="clasificar.js"></script>
 </body>
 </html>

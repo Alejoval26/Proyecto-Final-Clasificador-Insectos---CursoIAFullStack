@@ -1,0 +1,105 @@
+/* Establece los estilos generales del cuerpo y un fondo de color suave */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #000000;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupar al menos todo el viewport vertical */
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2bff00;
+    margin-bottom: 1rem;
+}
+
+/* Estilos para la descripción del clasificador */
+.description {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff; /* Un color gris claro para la descripción */
+    max-width: 600px; /* Controlar el ancho del texto de descripción */
+}
+
+/* Estilos para el contenedor de video/cámara y para el resultado */
+.camera, #resultado {
+    max-width: 100%;
+    width: 300px;
+    margin-bottom: 1rem;
+    overflow: hidden; /* Asegura que el contenido no sobrepase los bordes redondeados */
+}
+
+/* El video y el canvas ocuparán como máximo el 90% del ancho de la pantalla */
+video, canvas {
+    display: block; /* Evita que haya espacio adicional debajo del video */
+    max-width: 100%;
+    height: auto; /* Para mantener la relación de aspecto */
+}
+
+/* Contenedor para los controles (botones e input) */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos */
+    width: 90vw; /* Anchura basada en el ancho de la ventana de visualización */
+    max-width: 600px; /* Anchura máxima para dispositivos grandes */
+    margin-bottom: 1rem;
+}
+
+/* Botones e input con estilo uniforme */
+button, input[type="file"] {
+    background-color: #2bff00;
+    color: #000000;
+    border: 2px solid transparent;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%; /* Asegura que cada control ocupe todo el ancho del contenedor */
+    box-sizing: border-box; /* Incluye el padding y border en el ancho del elemento */
+}
+
+input[type="file"] {
+    background-color: #fff; /* Color de fondo para el input */
+    color: #333; /* Color de texto para el input */
+    text-align: center; /* Centra el texto del input */
+}
+
+button:hover, input[type="file"]:hover {
+    background-color: #28e000;
+    border-color: #000000;
+}
+
+/* Estilos para la sección de resultados */
+#resultado {
+    
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #000000;
+    display: none; /* Ocultar inicialmente */
+    height: 5rem;
+    flex-direction: column;
+    text-align: justify;
+    padding: 5px;
+     /* Centra los elementos */
+    width: 90vw; /* Anchura basada en el ancho de la ventana de visualización */
+    max-width: 600px; /* Anchura máxima para dispositivos grandes */
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+/* Asegura que la imagen de resultado no sea más grande que el contenedor */
+#resultado img {
+    max-width: 100%;
+    max-height: 300px; /* Altura máxima para la imagen del resultado */
+    display: block; /* Elimina el espacio extra debajo de la imagen */
+    margin: auto; /* Centra la imagen horizontalmente */
+}
+

@@ -1,0 +1,104 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #000000;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 10px;
+}
+
+h2 {
+    color: #2bff00;
+    margin: 20px 0;
+}
+
+p{
+    color: #fff;
+}
+
+.title-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinea los elementos de forma que ocupen todo el ancho */
+    width: 90vw;
+    max-width: 600px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.ImagenLogin{
+    max-width: 100%;
+    max-height: 300px; /* Altura máxima para la imagen del resultado */
+    display: block; /* Elimina el espacio extra debajo de la imagen */
+    margin: auto; /* Centra la imagen horizontalmente */
+}
+
+/* Estilos del formulario */
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Alinea los elementos de forma que ocupen todo el ancho */
+    width: 90vw;
+    max-width: 600px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#loginForm input[type="text"],
+#loginForm input[type="password"],
+#loginForm button {
+    padding: 15px;
+    margin: 5px 0; /* Espacio entre los inputs y el botón */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#loginForm input[type="text"],
+#loginForm input[type="password"] {
+    background-color: #fff;
+    color: #333;
+}
+
+#loginForm button {
+    background-color: #2bff00;
+    color: #000000;
+    cursor: pointer;
+}
+
+#loginForm button:hover {
+    background-color: #28e000;
+}
+
+/* Media queries para la responsividad */
+@media (max-width: 768px) {
+    #loginForm input[type="text"],
+    #loginForm input[type="password"],
+    #loginForm button {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px;
+    }
+
+    #loginForm {
+        width: 95vw;
+    }
+
+    #loginForm input[type="text"],
+    #loginForm input[type="password"],
+    #loginForm button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
