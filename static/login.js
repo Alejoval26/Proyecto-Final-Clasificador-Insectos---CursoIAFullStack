@@ -16,7 +16,7 @@ document.getElementById('loginForm').onsubmit = async (event) => {
     const data = await response.json();
     if (response.ok) {
         // Cambio de pestaña gracias a petición exitosa
-        window.location.href = 'clasificar.html';
+        window.location.href = '/clasificar';
     } else {
         // Alerta por error en la petición
         alert(data.detail);

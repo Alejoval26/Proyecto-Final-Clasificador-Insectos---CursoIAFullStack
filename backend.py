@@ -12,8 +12,31 @@ from io import BytesIO
 from pydantic import BaseModel
 from fastapi import HTTPException
 
-# Configuración de la aplicación y CORS
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 app = FastAPI()
+
+
+# Monta el directorio de archivos estáticos
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/")
+async def read_root():
+    return FileResponse('static/login.html')
+
+@app.get("/clasificar")
+async def get_classification_page():
+    return FileResponse('static/clasificar.html')
+
+@app.get("/registro")
+async def get_register_page():
+    return FileResponse('static/register.html')
+
+
+# Configuración de la aplicación y CORS
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -24,12 +47,20 @@ app.add_middleware(
 
 # Carga del modelo y configuración de la base de datos
 model = load_model('mi_modelo.h5')
+# db_config = {
+#     'user': 'alejoval',
+#     'password': 'alejoval',
+#     'host': 'localhost',
+#     'database': 'clasificadorinsectosia'
+# }
+
 db_config = {
     'user': 'alejoval',
     'password': 'alejoval',
-    'host': 'localhost',
+    'host': 'db',  # Nombre del servicio en docker-compose.yml, NO 'localhost'
     'database': 'clasificadorinsectosia'
 }
+
 
 
 # Cargamos el mapeo de etiquetas desde el CSV
