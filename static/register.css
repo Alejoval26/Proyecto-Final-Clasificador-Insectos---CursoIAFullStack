@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 body {
     font-family: 'Arial', sans-serif;
     color: #333;
@@ -29,11 +29,11 @@ p{
 .login-link a {
     color: #2bff00;
     text-decoration: none;
-    background-color: #333; /* Color de fondo para el enlace */
-    padding: 10px 5px; /* Padding para hacerlo parecer un botón */
-    border-radius: 5px; /* Bordes redondeados para el enlace */
-    display: inline-block; /* Para aplicar padding y margin */
-    transition: background-color 0.3s ease; /* Transición suave para el hover */
+    background-color: #333; 
+    padding: 10px 5px; 
+    border-radius: 5px; 
+    display: inline-block; 
+    transition: background-color 0.3s ease; 
 }
 
 .login-link a:hover {
@@ -44,7 +44,7 @@ p{
 .title-div {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alinea los elementos de forma que ocupen todo el ancho */
+    align-items: center; 
     width: 90vw;
     max-width: 600px;
     margin-bottom: 1rem;
@@ -54,12 +54,11 @@ p{
 
 .ImagenLogin{
     max-width: 100%;
-    max-height: 300px; /* Altura máxima para la imagen del resultado */
-    display: block; /* Elimina el espacio extra debajo de la imagen */
-    margin: auto; /* Centra la imagen horizontalmente */
+    max-height: 300px; 
+    display: block; 
+    margin: auto; 
 }
 
-/* Estilos del formulario */
 #registerForm, #loginForm {
     display: flex;
     flex-direction: column;
@@ -95,7 +94,7 @@ p{
     background-color: #28e000;
 }
 
-/* Media queries para la responsividad */
+
 @media (max-width: 768px) {
     #registerForm input, #loginForm input,
     #registerForm button, #loginForm button {
@@ -124,11 +123,11 @@ p{
     .login-link a {
         color: #2bff00;
         text-decoration: none;
-        background-color: #333; /* Color de fondo para el enlace */
-        padding: 10px 5px; /* Padding para hacerlo parecer un botón */
-        border-radius: 5px; /* Bordes redondeados para el enlace */
-        display: inline-block; /* Para aplicar padding y margin */
-        transition: background-color 0.3s ease; /* Transición suave para el hover */
+        background-color: #333;
+        padding: 10px 5px; 
+        border-radius: 5px;
+        display: inline-block;
+        transition: background-color 0.3s ease; 
         font-size: 12px;
     }
     .login-link {

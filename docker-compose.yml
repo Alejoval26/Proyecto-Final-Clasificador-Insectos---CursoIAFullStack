@@ -1,24 +1,27 @@
-version: '3.8'
-services:
-  web:
-    build: .
+version: '3.8'  # Especifica la versión de Docker Compose; 3.8 es una de las últimas versiones compatibles con la mayoría de características.
+
+services:  # Define los servicios, que son contenedores que forman la aplicación.
+  web:  # Este es el servicio que ejecuta la aplicación web FastAPI.
+    build: .  # Construye la imagen del contenedor usando el Dockerfile en el directorio actual.
     ports:
-      - "8000:8000"
+      - "8000:8000"  # Mapea el puerto 8000 del contenedor al puerto 8000, haciendo que la aplicación sea accesible.
     volumes:
-      - .:/app
+      - .:/app  # Monta el directorio actual en el contenedor en /app, permitiendo el desarrollo en vivo y la sincronización de código.
     depends_on:
-      - db
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: alejoval
-      MYSQL_DATABASE: clasificadorinsectosia
-      MYSQL_USER: alejoval
-      MYSQL_PASSWORD: alejoval
+      - db  # Indica que el servicio web depende del servicio db y debería esperar a que db esté listo antes de iniciar.
+
+  db:  # Este servicio corre tu base de datos MySQL.
+    image: mysql:5.7  # Utiliza la imagen oficial de MySQL versión 5.7.
+    restart: always  # Política de reinicio para siempre intentar reiniciar el contenedor si se detiene.
+    environment:  # Variables de entorno para configurar MySQL.
+      MYSQL_ROOT_PASSWORD: alejoval  # Establece la contraseña del usuario root en MySQL.
+      MYSQL_DATABASE: clasificadorinsectosia  # Crea una base de datos con este nombre al iniciar el contenedor.
+      MYSQL_USER: alejoval  # Crea un usuario MySQL y le da acceso a la base de datos.
+      MYSQL_PASSWORD: alejoval  # Establece la contraseña para el usuario MySQL.
     ports:
-      - "3306:3306"
+      - "3306:3306"  # Mapea el puerto 3306 del contenedor al puerto 3306 del host.
     volumes:
-      - db_data:/var/lib/mysql
-volumes:
-  db_data:
+      - db_data:/var/lib/mysql  # Monta el volumen db_data en el lugar donde MySQL almacena los datos, permitiendo que los datos persistan entre reinicios del contenedor.
+
+volumes:  # Define los volúmenes para la persistencia de datos.
+  db_data:  # Este volumen almacena los datos de la base de datos MySQL para persistencia.

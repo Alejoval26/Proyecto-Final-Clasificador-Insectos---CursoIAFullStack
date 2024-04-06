@@ -10,25 +10,25 @@
     <h2>CLASIFICADOR DE INSECTOS</h2>
     <p class="description">Este clasificador de imágenes te permite identificar y clasificar cualquier insecto en la imagen que cargues o captures. Selecciona una imagen o toma una foto y pulsa 'Clasificar' para obtener los resultados.</p>
     
-    <!-- Contenedor para el stream de video/cámara -->
+    
     <div class="camera" id="camera">
         <video id="videoStream" playsinline autoplay></video>
     </div>
     
-    <!-- Contenedor para los controles -->
+    
     <div class="controls">
-        <!-- Botón para capturar la foto -->
+        
         <button id="captureButton">Capturar Foto</button>
-        <!-- Input para cargar la imagen -->
+        
         <input type="file" id="image" accept="image/*">
-        <!-- Botón para clasificar la imagen -->
+        
         <button id="classifyButton">Clasificar</button>
     </div>
     
-    <!-- Canvas para mostrar la imagen capturada o cargada -->
+    
     <canvas id="canvas"></canvas>
     
-    <!-- Contenedor para mostrar el resultado -->
+    
     <div id="resultado"></div>
     
     <script src="/static/clasificar.js"></script>

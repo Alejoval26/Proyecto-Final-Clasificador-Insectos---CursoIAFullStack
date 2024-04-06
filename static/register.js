@@ -1,29 +1,34 @@
-// Asegúrate de que el nombre de este archivo coincida con el que has referenciado en tu HTML
-
+// Agrega un escuchador de eventos para el envío del formulario de registro
 document.getElementById('registerForm').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Previene el comportamiento por defecto del formulario
+    // Previene el comportamiento por defecto de enviar el formulario
+    event.preventDefault();
     
+    // Obtiene los valores de usuario y contraseña de los campos del formulario
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     
+    // Realiza una solicitud POST al servidor para registrar un nuevo usuario
     const response = await fetch('http://localhost:8000/registrar', {
-        method: 'POST',
+        method: 'POST', // Método HTTP utilizado para la solicitud
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json', // Establece el tipo de contenido como JSON
         },
-        body: JSON.stringify({
+        body: JSON.stringify({ // Convierte el objeto de usuario y contraseña a una cadena JSON
             username: username,
             password: password
         })
     });
     
+    // Espera la respuesta del servidor y la convierte en formato JSON
     const data = await response.json();
+    
+    // Verifica si la respuesta del servidor fue exitosa (código de estado 200-299)
     if (response.ok) {
-        // Aquí puedes redirigir al usuario a otro HTML o mostrar un mensaje de éxito
+        // Si el registro fue exitoso, muestra un mensaje y redirige al usuario a la página de inicio de sesión
         alert('Usuario registrado con éxito');
-        window.location.href = 'login.html'; // Cambia a tu página de inicio de sesión
+        window.location.href = 'login.html'; // Se redirige al usuario a la página de login
     } else {
-        // Mostrar mensaje de error al usuario
+        // Si hay un error (como un usuario ya existente), muestra un mensaje de alerta
         alert(`Error en el registro: ${data.detail}`);
     }
 });
